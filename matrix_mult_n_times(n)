@@ -1,0 +1,20 @@
+import numpy as np
+def matrix_mult_n_times(n):
+	Q=np.array([[1,1],
+				[1,0]], dtype=int);
+	Q_1=Q
+  # This is to store the first value of Q into a variable I won't change. The value of Q will change throughout the program. 
+  # but we need to continue to use the first value of Q in the for loop:
+	if (n==0):
+			Q=np.array([[1,0],
+				[0,1]], dtype=int);	
+  # Q^0=Identity 
+	else:
+		for n in range (2,n+1):
+  # We ignore the situation when n=1, so that if we have n=1, we go directly to return Q. 
+  # I could have write "elif (n>=2)", but it is redundant.
+			Q=Q@Q_1
+	return Q
+  
+n=int(input("Please input positive values of n \n"))
+print(matrix_mult_n_times(n))
